@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: linear-gradient(rgba(62, 20, 20, 0.034), rgba(62, 20, 20, 0.171)),url(../img/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    font-family: 'Ubuntu', sans-serif;
+    position: relative;
+    min-width: 1000px;
+    height: 100vh;
+}
+
+
+.wrapper{
+    background: #f3f3f3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1000px;
+    height: 650px;
+    border-radius: 1rem;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+
+/* Player */
+.player-name{
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 7rem 0;
+
+}
+
+.active .player-name::after{
+    content: "\2022";
+    font-size: 47px;
+    position: absolute;
+    padding-left: 1rem;
+    color: rgb(236, 171, 228);
+}
+
+@keyframes activeScale{
+    from{transform: scale(1.5);}
+    to{transform: scale(1);}
+}
+
+.active .player-name{
+    -webkit-animation:activeScale 1s ease-in-out; /* Safari & Chrome */
+    -moz-animation:activeScale 1s ease-in-out; /* Firefox */
+    -ms-animation:activeScale 1s ease-in-out; /* Internet Explorer */
+    -o-animation:activeScale 1s ease-in-out; /* Opera */
+    animation: activeScale 1s ease-in-out;
+}
+
+.active{
+    background: rgb(250, 232, 248);
+}
+
+@keyframes big{
+    from {transform: scale(1.5);}
+    to {transform: scale(1); }
+}
+
+
+.score-box{
+    background:  rgb(243, 198, 237);
+    border-radius: .5rem;
+    width: 150px;
+    height: 90px;
+    margin: 18rem auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.score-label{
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+    color: rgb(233, 87, 213);
+}
+
+.player-score{
+    font-size: 2rem;
+}
+
+
+
+/* Button */
+.btn-wrapper{
+    position: absolute;
+    width:250px;
+    bottom: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    display:flex;
+    justify-content: center;
+}
+
+.btn-wrapper button{
+    background: transparent;
+    outline: 0;
+    border:0;
+}
+
+.btn-select{
+    width: 70px;
+    cursor: pointer;
+    transition: all .2s ease-out;
+}
+
+.btn-select:hover{
+    transform: scale(1.2);
+}
+
+.btn-new{
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    border:0;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    font-family: 'Ubuntu', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    padding: .2rem 1.2rem .2rem .5rem;
+    color: rgb(236, 132, 222);
+    background: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all .2s ease-out;
+    outline: 0;
+}
+
+.btn-new:hover{
+    background: rgba(250, 187, 239, 0.336);
+    border-radius: 20px;
+}
+
+.btn-new img{
+    width: 40px;
+}
+
+/* Result */
+.result-wrapper{
+    position: absolute;
+    bottom: 35%;   
+    opacity: 0;
+    /* Need to be set to 0 */
+}
+
+#result-0{
+    left: 16.5%;
+}
+
+#result-1{
+    right: 16.5%;
+}
+
+.result-wrapper.result-appear{
+    opacity: 1;
+    transition: all 1s ease-out .5s;
+}
+
+.result-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all .5s ease-out;
+}
+
+.result-label{
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color:rgb(97, 120, 252);
+    padding-top: 1rem;
+    opacity: 0;
+}
+
+.result-container img{
+    width: 170px;
+}
+
+/* Final Score Input */
+.final-score{
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    border:0;
+    outline:0;
+    padding: .3rem 0;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    border-radius: 20px;
+    font-size: 1rem;
+    
+}
+
+.final-score:focus{
+    background:rgb(255, 141, 240);
+    color: #fff;
+    
+}
+
+/* win */
+.win{
+    color: rgb(255, 60, 60);
+    font-weight: bold;
+
+}
+
+.win-score .player-score{
+    animation: activeScale 1s ease-in-out;
+}
+
+.lose .result-label{
+    color: rgb(1, 21, 201);
+    font-weight: bold;
+
+}
+
+/* Final Winner */
+@keyframes winnerColor{
+    from{color: rgb(255, 60, 60);}
+    to{color: #fff;}
+}
+
+
+/* Macaroon Covering the Result */
+.cover{
+    position: absolute;
+    bottom: 40%;
+    width: 200px;
+    opacity: 1;
+    transition: all .5s ease-out;
+
+}
+
+.cover.disappear{
+    opacity: 0;
+    transition: all .5s ease-out;
+}
+
+#cover-0{
+    left: 15%;
+
+}
+
+#cover-1{
+    right: 15%;
+}
+
+/* Next Button */
+.next{
+    position: absolute;
+    bottom: 43%;
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 150px;
+    opacity: 0;
+}
+
+.next.next-appear{
+    opacity: .9;
+    transition: opacity .5s ease-out 1.5s;
+    cursor: pointer;
+}
+
